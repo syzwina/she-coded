@@ -1,0 +1,65 @@
+/* General body and page styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff8e1; /* Light yellow background */
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Page title styling */
+.page-title {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    color: #ffeb3b; /* Bright yellow */
+    margin-bottom: 20px;
+}
+
+/* Table Styling */
+.customer-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+/* Table Header */
+.customer-table thead {
+    background-color: #ffeb3b;
+    color: white;
+}
+
+.customer-table th, .customer-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border: 1px solid #ccc;
+}
+
+/* Table Rows */
+.customer-table tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+.customer-table tbody tr:hover {
+    background-color: #fbc02d; /* Darker yellow for hover effect */
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .customer-table {
+        font-size: 14px;
+    }
+
+    .customer-table th, .customer-table td {
+        padding: 10px;
+    }
+}

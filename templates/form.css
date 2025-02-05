@@ -1,0 +1,75 @@
+/* Resetting margins and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff8e1;  /* Light yellow background */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Container for the form */
+form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Form label styling */
+label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+    display: inline-block;
+}
+
+/* Input field styling */
+input[type="name"], input[type="email"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+}
+
+input[type="name"]:focus, input[type="email"]:focus {
+    border-color: #ffeb3b;  /* Yellow border when focused */
+    outline: none;
+}
+
+/* Submit button styling */
+input[type="submit"] {
+    background-color: #ffeb3b;  /* Bright yellow */
+    color: #fff;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #fbc02d;  /* Darker yellow on hover */
+}
+
+/* Add some margin to the form elements */
+input[type="submit"], label {
+    margin-top: 10px;
+}
