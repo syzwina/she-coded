@@ -10,6 +10,7 @@ app = Flask(__name__)
 # Create database
 connect = sqlite3.connect('database.db') 
 connect.execute( 'CREATE TABLE IF NOT EXISTS CUSTOMERS (name TEXT, email TEXT, city TEXT, country TEXT, phone TEXT)') 
+connect.execute( 'CREATE TABLE IF NOT EXISTS ORDERS (customer_email TEXT, bulb_type TEXT, quantity INT, date datetime default current_timestamp)') 
 
 # The route() function of the Flask class is a decorator, 
 # which tells the application which URL should call 
@@ -44,7 +45,6 @@ def join():
     else: 
         return render_template('form.html') 
   
-  
 @app.route('/list') 
 def list(): 
     connect = sqlite3.connect('database.db') 
@@ -53,6 +53,30 @@ def list():
   
     data = cursor.fetchall() 
     return render_template("list.html", data=data) 
+
+@app.route('/order', methods=['GET', 'POST']) 
+def order(): 
+    if request.method == 'POST': 
+        email = request.form['email'] 
+        bulb_type = request.form['bulb_type'] 
+        quantity = request.form['quantity'] 
+  
+        with sqlite3.connect("database.db") as users: 
+            cursor = users.cursor() 
+            cursor.execute("INSERT INTO ORDERS (customer_email,bulb_type,quantity) VALUES (?,?,?)", (email, bulb_type, quantity)) 
+            users.commit() 
+        return redirect("/orders")
+    else: 
+        return render_template('order.html') 
+
+@app.route('/orders') 
+def orders_list(): 
+    connect = sqlite3.connect('database.db') 
+    cursor = connect.cursor() 
+    cursor.execute('SELECT * FROM ORDERS') 
+  
+    data = cursor.fetchall() 
+    return render_template("orders_list.html", data=data) 
 
 @app.route('/Bulbbnb/<bulb_name>')
 def bulb(bulb_name):

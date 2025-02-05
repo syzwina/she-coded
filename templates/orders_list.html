@@ -1,0 +1,29 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+		<title> Orders List </title> 
+	</head> 
+	<style> 
+		table, th, td { 
+		border:1px solid black; 
+		} 
+		</style> 
+	<body> 
+		<table style="width:100%"> 
+			<tr> 
+			<th>Cutomer Email</th> 
+			<th>Bulb Type</th> 
+			<th>Quantity</th> 
+			<th>Date</th> 
+			</tr> 
+			{%for order in data%} 
+			<tr> 
+				<td>{{order[0]}}</td> 
+				<td>{{order[1]}}</td> 
+				<td>{{order[2]}}</td> 
+				<td>{{order[3]}}</td> 
+				</tr> 
+			{%endfor%} 
+		</table>		 
+	</body> 
+</html> 
