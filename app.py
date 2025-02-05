@@ -23,6 +23,10 @@ def hello_name(name):
 def Bulbbnb():
     return render_template('Bulbbnb.html') 
 
+@app.route('/Bulbbnb/<bulb_name>')
+def bulb(bulb_name):
+    return render_template('product.html', name=bulb_name, image='/static/bulb1.jpg') 
+
 # main driver function
 if __name__ == '__main__':
 
