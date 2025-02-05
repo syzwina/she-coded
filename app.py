@@ -1,11 +1,15 @@
 # Importing flask module in the project is mandatory
 # An object of Flask class is our WSGI application.
-from flask import Flask
-from flask import render_template
+from flask import Flask, render_template, request, redirect
+import sqlite3 
 
 # Flask constructor takes the name of 
 # current module (__name__) as argument.
 app = Flask(__name__)
+
+# Create database
+connect = sqlite3.connect('database.db') 
+connect.execute( 'CREATE TABLE IF NOT EXISTS CUSTOMERS (name TEXT, email TEXT, city TEXT, country TEXT, phone TEXT)') 
 
 # The route() function of the Flask class is a decorator, 
 # which tells the application which URL should call 
@@ -22,6 +26,33 @@ def hello_name(name):
 @app.route('/Bulbbnb')
 def Bulbbnb():
     return render_template('Bulbbnb.html') 
+  
+@app.route('/form', methods=['GET', 'POST']) 
+def join(): 
+    if request.method == 'POST': 
+        name = request.form['name'] 
+        email = request.form['email'] 
+        city = request.form['city'] 
+        country = request.form['country'] 
+        phone = request.form['phone'] 
+  
+        with sqlite3.connect("database.db") as users: 
+            cursor = users.cursor() 
+            cursor.execute("INSERT INTO CUSTOMERS (name,email,city,country,phone) VALUES (?,?,?,?,?)", (name, email, city, country, phone)) 
+            users.commit() 
+        return redirect("/list")
+    else: 
+        return render_template('form.html') 
+  
+  
+@app.route('/list') 
+def list(): 
+    connect = sqlite3.connect('database.db') 
+    cursor = connect.cursor() 
+    cursor.execute('SELECT * FROM CUSTOMERS') 
+  
+    data = cursor.fetchall() 
+    return render_template("list.html", data=data) 
 
 @app.route('/Bulbbnb/<bulb_name>')
 def bulb(bulb_name):
