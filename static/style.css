@@ -15,7 +15,7 @@ body {
 
 /* Header Styling */
 header {
-    background-color: #ff5a5f;  /* Airbnb's signature red */
+    background-color: rgb(224, 190, 66); 
     padding: 20px;
 }
 
@@ -27,7 +27,7 @@ header nav {
 
 header .logo h1 {
     color: white;
-    font-size: 24px;
+    font-size: 50px;
     font-weight: 700;
 }
 
@@ -41,7 +41,7 @@ header .menu ul li a {
     text-decoration: none;
     color: white;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 25px;
 }
 
 header .menu ul li a:hover {
@@ -55,11 +55,11 @@ header .menu ul li a:hover {
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-top: 40px;
-    font-size: 50px;
+    font-size: 25px;
 }
 
 .search-bar h2 {
-    font-size: 24px;
+    font-size: 32px;
     font-weight: 600;
     margin-bottom: 20px;
     color: #333;
@@ -112,11 +112,13 @@ header .menu ul li a:hover {
 }
 
 .featured-listings .listing {
-    display: flex;
+    display: grid;
     justify-content: space-around;
     gap: 30px;
     flex-wrap: wrap;
     margin-top: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
 }
 
 .featured-listings .listing-card {
@@ -193,5 +195,5 @@ footer p {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 30px;
+    font-size: 27px;
 }
